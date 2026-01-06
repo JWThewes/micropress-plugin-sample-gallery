@@ -1,0 +1,36 @@
+{
+  "id": "micropress-sampple-plugin",
+  "name": "Sample Image Gallery",
+  "version": "1.0.0",
+  "description": "Add responsive image galleries with lightbox",
+  "author": "MicroPress",
+  "homepage": "https://github.com/your-org/plugin-gallery",
+  "capabilities": {
+    "editor": true,
+    "backend": true,
+    "renderer": true
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "columns": {
+        "type": "number",
+        "default": 3,
+        "minimum": 1,
+        "maximum": 6
+      }
+    }
+  },
+  "endpoints": [
+    { "path": "/galleries", "method": "GET", "handler": "listGalleries" },
+    { "path": "/galleries/{id}", "method": "GET", "handler": "getGallery" }
+  ],
+  "rendererHooks": {
+    "beforeConversion": true,
+    "afterConversion": true
+  },
+  "permissions": {
+    "dataAccess": true,
+    "assetAccess": true
+  }
+}
