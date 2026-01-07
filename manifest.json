@@ -1,5 +1,5 @@
 {
-  "id": "micropress-sampple-plugin",
+  "id": "micropress-sample-plugin",
   "name": "Sample Image Gallery",
   "version": "1.0.0",
   "description": "Add responsive image galleries with lightbox",
