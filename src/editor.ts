@@ -1,4 +1,4 @@
-import { Node, mergeAttributes } from '@tiptap/core';
+import { Node, mergeAttributes } from '@micropress/plugin-sdk/editor';
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {

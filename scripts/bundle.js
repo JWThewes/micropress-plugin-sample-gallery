@@ -54,7 +54,7 @@ const buildEditor = async () => {
     format: 'esm',
     platform: 'browser',
     target: 'es2020',
-    external: ['@tiptap/*']
+    // SDK's editor module provides shims that access host app's globals
   });
   console.log('✓ Built editor.js');
   return true;
