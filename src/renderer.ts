@@ -27,7 +27,9 @@ export function afterConversion(html: string, sdk: PluginSDK) {
                 console.error('Failed to parse gallery images:', e);
             }
 
-            const columns = columnsMatch ? columnsMatch[1] : '3';
+            // Use config value if available, otherwise check data attribute, finally default to 3
+            const configColumns = sdk.config.columns || 3;
+            const columns = columnsMatch ? columnsMatch[1] : String(configColumns);
 
             if (images.length === 0) {
                 return '';
