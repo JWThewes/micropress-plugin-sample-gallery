@@ -5,6 +5,7 @@ export function beforeConversion(json: any, sdk: PluginSDK) {
 }
 
 export function afterConversion(html: string, sdk: PluginSDK) {
+    sdk.log('info', 'Gallery plugin config', { config: sdk.config });
     return html.replace(
         /<div data-type="gallery"([^>]*)><\/div>/g,
         (match, attrs) => {
