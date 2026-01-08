@@ -5,7 +5,6 @@ export function beforeConversion(json: any, sdk: PluginSDK) {
 }
 
 export function afterConversion(html: string, sdk: PluginSDK) {
-    sdk.log('info', 'Gallery plugin config', { config: sdk.config });
     return html.replace(
         /<div data-type="gallery"([^>]*)><\/div>/g,
         (match, attrs) => {
@@ -28,9 +27,10 @@ export function afterConversion(html: string, sdk: PluginSDK) {
                 console.error('Failed to parse gallery images:', e);
             }
 
-            // Use config value if available, otherwise check data attribute, finally default to 3
-            const configColumns = sdk.config.columns || 3;
-            const columns = columnsMatch ? columnsMatch[1] : String(configColumns);
+            // Priority: 1. Config (if set), 2. Data attribute (per-gallery), 3. Default
+            const dataColumns = columnsMatch ? columnsMatch[1] : null;
+            const configColumns = sdk.config.columns;
+            const columns = String(configColumns || dataColumns || 3);
 
             if (images.length === 0) {
                 return '';
